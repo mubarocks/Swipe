@@ -144,6 +144,21 @@ Swipe.prototype = {
 
   },
 
+  goto: function(index, delay) {
+
+    if (this.index == index) {
+      return // return if same slide
+    }
+    else {
+      // cancel next scheduled automatic transition, if any
+      this.delay = delay || 0;
+      clearTimeout(this.interval);
+
+      this.slide(index, this.speed);
+    }
+
+  },
+
   begin: function() {
 
     var _this = this;
